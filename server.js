@@ -22,6 +22,18 @@ app.use(express.static(__dirname + '/public')); // js, css, images
 app.listen(server_port, server_ip_address, () => {
   console.log(`Listening on port ${server_port}`);
 });
+
+app.get('/', function(req, res) {
+  res.render('index.html');
+});
+
+app.get('/hello', function (req, res) {
+  res.send('你好');
+})
+
+app.get('/hello/:name', function (req, res) {
+  res.send('你好, ' + req.params.name);
+})
 module.exports = app ;
 
 console.log("Server running at http://" + server_ip_address + ":" + server_port);
