@@ -1,5 +1,5 @@
-var ip   = "127.0.0.1";
-var port = 5000;
+var ip   = "0.0.0.0";
+var port = 8080;
 var http = require('http');
 
 
@@ -22,12 +22,8 @@ app.use(express.static(__dirname + '/public')); // js, css, images
 app.listen(server_port, server_ip_address, () => {
   console.log(`Listening on port ${server_port}`);
 });
-
-
-// http.createServer(function (req, res) {
-//   res.writeHead(200, {'Content-Type': 'text/plain'});
-//   res.end('Hello World\n');
-// }).listen(server_port, server_ip_address);
+module.exports = app ;
 
 console.log("Server running at http://" + server_ip_address + ":" + server_port);
-
+console.log(`process.env.OPENSHIFT_NODEJS_PORT: ${process.env.OPENSHIFT_NODEJS_PORT}`);
+console.log(`process.env.OPENSHIFT_NODEJS_IP: ${process.env.OPENSHIFT_NODEJS_IP}`);
